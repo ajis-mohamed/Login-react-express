@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function Signin() {
+    const Api_url = "https://backend-login-three-delta.vercel.app"
     const location = useLocation();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -28,7 +29,7 @@ function Signin() {
 
         try {
             const res = await fetch(
-                `http://localhost:5000/signin?email=${cleanEmail}&password=${cleanPassword}`
+                `${Api_url}/signin?email=${cleanEmail}&password=${cleanPassword}`
             );
             const message = await res.text();
             console.log(message);

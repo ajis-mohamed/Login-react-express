@@ -3,6 +3,7 @@ import { Link, useLocation,useNavigate } from "react-router-dom";
 import axios from "axios"
 
 function Signup() {
+  const Api_url = "https://backend-login-three-delta.vercel.app"
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -138,7 +139,7 @@ function Signup() {
             onClick={async() => 
               {
                 isFormValid && navigate("/signin")
-                const data = await axios.post("http://localhost:5000/signup",{username:fullName,email:email,password:password});
+                const data = await axios.post(`${Api_url}/signup`,{username:fullName,email:email,password:password});
                 try {
                   const response = await data
                   console.log(response.data);
